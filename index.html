@@ -197,7 +197,7 @@
         .testimonials {
             margin: 60px 0 40px 0;
             position: relative;
-            padding: 30px 0;
+            padding-top: 60px;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
@@ -226,12 +226,13 @@
             text-align: center;
             font-size: 1.3rem;
             font-weight: 600;
-            margin: 0 0 30px 0;
+            margin: 0 auto 8px auto;
             opacity: 0.85;
             letter-spacing: 2px;
             position: relative;
-            display: inline-block;
+            display: table;
             padding: 0 20px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
         }
 
         .testimonials-title::before,
@@ -297,6 +298,129 @@
             text-align: center;
             padding: 40px 20px;
             margin: 40px 0;
+        }
+
+        /* GitHub 贡献项目区域 */
+        .contributions {
+            margin: 60px 0 40px 0;
+            position: relative;
+            padding-top: 0;
+        }
+
+        .contributions-title {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0 auto 8px auto;
+            opacity: 0.85;
+            letter-spacing: 2px;
+            position: relative;
+            display: table;
+            padding: 0 20px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        .contributions-title::before,
+        .contributions-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .contributions-title::before {
+            left: -20px;
+        }
+
+        .contributions-title::after {
+            right: -20px;
+        }
+
+        .contributions-desc {
+            text-align: center;
+            font-size: 0.95rem;
+            opacity: 0.75;
+            letter-spacing: 1px;
+            margin: 10px auto 40px auto;
+            max-width: 600px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .project-item {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transition: all 0.3s ease;
+        }
+
+        .project-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateX(8px);
+        }
+
+        .project-rank {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .project-item:nth-child(1) .project-rank { background: rgba(255, 215, 0, 0.3); }
+        .project-item:nth-child(2) .project-rank { background: rgba(192, 192, 192, 0.3); }
+        .project-item:nth-child(3) .project-rank { background: rgba(205, 127, 50, 0.3); }
+
+        .project-name {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-name a {
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-name a:hover {
+            opacity: 0.8;
+        }
+
+        .project-prs {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        .project-field {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 8px;
         }
 
         .more-projects p {
@@ -392,6 +516,102 @@
         .card:nth-child(2) { animation-delay: 0.2s; }
         .card:nth-child(3) { animation-delay: 0.3s; }
         .card:nth-child(4) { animation-delay: 0.4s; }
+
+        /* 语言切换开关 */
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* 个人创建项目区域 */
+        .personal-projects {
+            text-align: center;
+            padding: 60px 20px;
+            margin: 40px 0;
+        }
+
+        .personal-projects-title {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0 auto 20px auto;
+            opacity: 0.85;
+            letter-spacing: 2px;
+            position: relative;
+            display: table;
+            padding: 0 20px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        .personal-projects-title::before,
+        .personal-projects-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .personal-projects-title::before {
+            left: -20px;
+        }
+
+        .personal-projects-title::after {
+            right: -20px;
+        }
+
+        .personal-projects-desc {
+            font-size: 1rem;
+            opacity: 0.75;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+        }
+
+        .lang-switch-btn {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 8px 16px;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .lang-switch-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .lang-switch-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* 手机端适配 */
+        @media (max-width: 768px) {
+            .lang-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .lang-switch-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -401,6 +621,18 @@
     <!-- 遮罩层 -->
     <div class="overlay"></div>
 
+    <!-- 语言切换按钮 -->
+    <div class="lang-switch">
+        <button class="lang-switch-btn" id="langSwitch" onclick="toggleLanguage()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span id="langText">EN</span>
+        </button>
+    </div>
+
     <!-- 主内容 -->
     <div class="container">
         <!-- 头部介绍 -->
@@ -408,8 +640,7 @@
             <div class="avatar">👨‍💻</div>
             <h1 class="name">Security Notes</h1>
             <div class="bio">
-                <p>探索未知，智造非凡</p>
-                <p class="bio-en">Join us to explore new frontiers and craft a world of wonder.</p>
+                <p data-zh="一名网络安全研究者的安全笔记，包括情报收集、安全工具和安全博客。希望能降低安全研究的门槛，保持好奇，持续学习，与君共勉" data-en="Personal security notes from a cybersecurity researcher, including intelligence gathering, security tools, and security blogs. Hope to lower the threshold for security research, stay curious, keep learning, and encourage each other.">一名网络安全研究者的安全笔记，包括情报收集、安全工具和安全博客。希望能降低安全研究的门槛，保持好奇，持续学习，与君共勉</p>
             </div>
         </header>
 
@@ -418,69 +649,167 @@
             <!-- 项目 1 -->
             <a href="https://secnotes.github.io/secnews/" class="card" target="_blank">
                 <div class="card-icon">🚀</div>
-                <h3 class="card-title">安全情报自动化 | Security Intelligence Automation</h3>
-                <p class="card-desc">一个自动化的安全资讯聚合平台，每日从各大安全社区收集技术文章和新闻资讯。</p>
-                <p class="card-desc-en">An automated security information aggregation platform that collects technical articles and news from major security communities daily.</p>
+                <h3 class="card-title" data-zh="安全情报自动化" data-en="Security Intelligence Automation">安全情报自动化</h3>
+                <p class="card-desc" data-zh="一个自动化的安全资讯聚合平台，每日从各大安全社区收集技术文章和新闻资讯。" data-en="An automated security information aggregation platform that collects technical articles and news from major security communities daily.">一个自动化的安全资讯聚合平台，每日从各大安全社区收集技术文章和新闻资讯。</p>
             </a>
 
             <!-- 项目 2 -->
             <a href="https://secnotes.github.io/dailycve/" class="card" target="_blank">
                 <div class="card-icon">🔒</div>
-                <h3 class="card-title">CVE 漏洞追踪 | CVE Vulnerability Tracker</h3>
-                <p class="card-desc">每日自动收集自 MITRE 的最新高危漏洞信息。</p>
-                <p class="card-desc-en">Automatically collects the latest high-risk vulnerability information from MITRE on a daily basis.</p>
+                <h3 class="card-title" data-zh="CVE 漏洞追踪" data-en="CVE Vulnerability Tracker">CVE 漏洞追踪</h3>
+                <p class="card-desc" data-zh="每日自动收集自 MITRE 的最新高危漏洞信息。" data-en="Automatically collects the latest high-risk vulnerability information from MITRE on a daily basis.">每日自动收集自 MITRE 的最新高危漏洞信息。</p>
             </a>
 
             <!-- 项目 3 -->
             <a href="https://secnotes.github.io/daily-cve-nvd/" class="card" target="_blank">
                 <div class="card-icon">🛡️</div>
-                <h3 class="card-title">CVE 漏洞追踪 | CVE Vulnerability Tracker (NVD)</h3>
-                <p class="card-desc">每日自动收集自 NVD 的最新高危漏洞信息。</p>
-                <p class="card-desc-en">Automatically collects the latest high-risk vulnerability information from NVD on a daily basis.</p>
+                <h3 class="card-title" data-zh="CVE 漏洞追踪 (NVD)" data-en="CVE Vulnerability Tracker (NVD)">CVE 漏洞追踪 (NVD)</h3>
+                <p class="card-desc" data-zh="每日自动收集自 NVD 的最新高危漏洞信息。" data-en="Automatically collects the latest high-risk vulnerability information from NVD on a daily basis.">每日自动收集自 NVD 的最新高危漏洞信息。</p>
             </a>
 
             <!-- 项目 4 -->
             <a href="https://secnotes.github.io/fuzzing-tutorial/" class="card" target="_blank">
                 <div class="card-icon">📚</div>
-                <h3 class="card-title">Fuzzing 资源汇总 | Fuzzing Resources</h3>
-                <p class="card-desc">从入门书籍到最新顶会论文一站式收集，旨在帮助安全研究者系统性地学习和实践 Fuzzing 技术。</p>
-                <p class="card-desc-en">A one-stop collection from introductory books to the latest top conference papers, aimed at helping security researchers systematically learn and practice Fuzzing technology.</p>
+                <h3 class="card-title" data-zh="Fuzzing 资源汇总" data-en="Fuzzing Resources">Fuzzing 资源汇总</h3>
+                <p class="card-desc" data-zh="从入门书籍到最新顶会论文一站式收集，旨在帮助安全研究者系统性地学习和实践 Fuzzing 技术。" data-en="A one-stop collection from introductory books to the latest top conference papers, aimed at helping security researchers systematically learn and practice Fuzzing technology.">从入门书籍到最新顶会论文一站式收集，旨在帮助安全研究者系统性地学习和实践 Fuzzing 技术。</p>
             </a>
 
             <!-- 项目 5 -->
             <a href="https://secnotes.github.io/grc/" class="card" target="_blank">
                 <div class="card-icon">📄</div>
-                <h3 class="card-title">GRC 原创翻译 | GRC Translations</h3>
-                <p class="card-desc">网络安全策略/框架/标准/指南/白皮书的原创翻译，NO AI Content。</p>
-                <p class="card-desc-en">Original translations of cybersecurity policies, frameworks, standards, guidelines, and whitepapers. NO AI Content.</p>
+                <h3 class="card-title" data-zh="GRC 原创翻译" data-en="GRC Translations">GRC 原创翻译</h3>
+                <p class="card-desc" data-zh="网络安全策略/框架/标准/指南/白皮书的原创翻译，NO AI Content。" data-en="Original translations of cybersecurity policies, frameworks, standards, guidelines, and whitepapers. NO AI Content.">网络安全策略/框架/标准/指南/白皮书的原创翻译，NO AI Content。</p>
             </a>
             <!-- 项目 6 -->
-            <a href="https://github.com/secnotes" class="card" target="_blank">
-                <div class="card-icon">🐙</div>
-                <h3 class="card-title">GitHub 主页 | GitHub Profile</h3>
-                <p class="card-desc">访问个人 Github 主页获取更多工具类项目。</p>
-                <p class="card-desc-en">Visit my GitHub profile for more tool projects.</p>
+            <a href="https://blog.csdn.net/song_lee" class="card" target="_blank">
+                <div class="card-icon">📝</div>
+                <h3 class="card-title" data-zh="个人博客" data-en="Personal Blog">个人博客</h3>
+                <p class="card-desc" data-zh="最初的安全笔记放在 CSDN 上，也零零星星在其他专业安全平台上写过博客。" data-en="My initial security notes were posted on CSDN, and I also wrote some blogs on other professional security platforms.">最初的安全笔记放在 CSDN 上，也零零星星在其他专业安全平台上写过博客。</p>
             </a>
         </section>
 
         <br />
         <br />
+        <br />
 
         <!-- 评价 -->
+        <h2 class="testimonials-title" data-zh="评价" data-en="Testimonials">评价</h2>
         <section class="testimonials">
             <div class="testimonial">
-                <p class="testimonial-text">"@secnotes 是一位深耕二进制安全领域的开发者，专注于 Fuzzing、固件分析和 Android 逆向，擅长构建实用安全工具并整理分享学习资源，在中文安全社区有一定影响力。"</p>
+                <p class="testimonial-text" data-zh="@secnotes 是一位深耕二进制安全领域的开发者，专注于 Fuzzing、固件分析和 Android 逆向，擅长构建实用安全工具并整理分享学习资源，在中文安全社区有一定影响力。" data-en="@secnotes is a developer deeply involved in the binary security field, focusing on Fuzzing, firmware analysis, and Android reverse engineering. He excels at building practical security tools and organizing learning resources, and has certain influence in the Chinese security community.">@secnotes 是一位深耕二进制安全领域的开发者，专注于 Fuzzing、固件分析和 Android 逆向，擅长构建实用安全工具并整理分享学习资源，在中文安全社区有一定影响力。</p>
                 <p class="testimonial-author">
-                    <span class="testimonial-logo">🦅</span>来自 OpenClaw 的评价
+                    <span class="testimonial-logo">🦅</span><span data-zh="来自 OpenClaw 的评价" data-en="from OpenClaw">来自 OpenClaw 的评价</span>
                 </p>
             </div>
 
             <div class="testimonial">
-                <p class="testimonial-text">"@secnotes 是一位专注底层安全研究的实战派技术专家，深耕固件安全分析、模糊测试与逆向工程领域；他既是开源工具开发者（如 firmware-analysis-plus、fuzzing-tutorial），也是安全知识布道者，通过高质量博客与 curated 资源列表持续输出中文技术内容；其项目注重实用性与可复现性，致力于降低安全研究门槛，是 IoT 安全与二进制漏洞方向值得关注的优质创作者。"</p>
+                <p class="testimonial-text" data-zh="@secnotes 是一位专注底层安全研究的实战派技术专家，深耕固件安全分析、模糊测试与逆向工程领域；他既是开源工具开发者（如 firmware-analysis-plus、fuzzing-tutorial），也是安全知识布道者，通过高质量博客与 curated 资源列表持续输出中文技术内容；其项目注重实用性与可复现性，致力于降低安全研究门槛，是 IoT 安全与二进制漏洞方向值得关注的优质创作者。" data-en="@secnotes is a practical technical expert focusing on low-level security research, deeply engaged in firmware security analysis, fuzzing, and reverse engineering. He is both an open-source tool developer and a security knowledge evangelist, continuously producing Chinese technical content through high-quality blogs and curated resource lists. His projects focus on practicality and reproducibility, committed to lowering the threshold for security research.">@secnotes 是一位专注底层安全研究的实战派技术专家，深耕固件安全分析、模糊测试与逆向工程领域；他既是开源工具开发者（如 firmware-analysis-plus、fuzzing-tutorial），也是安全知识布道者，通过高质量博客与 curated 资源列表持续输出中文技术内容；其项目注重实用性与可复现性，致力于降低安全研究门槛，是 IoT 安全与二进制漏洞方向值得关注的优质创作者。</p>
                 <p class="testimonial-author">
-                    <span class="testimonial-logo">🤖</span>来自 Claude Code 的评价
+                    <span class="testimonial-logo">🤖</span><span data-zh="来自 Claude Code 的评价" data-en="from Claude Code">来自 Claude Code 的评价</span>
                 </p>
             </div>
+        </section>
+
+        <!-- GitHub 贡献项目 -->
+        <br /><br />
+        <h2 class="contributions-title" data-zh="GitHub 重点贡献项目" data-en="Key GitHub Contributions">GitHub 重点贡献项目</h2>
+        <p class="contributions-desc" data-zh="41 个外部 PR，22 个贡献项目，Top 10 重点贡献项目" data-en="41 external PRs, 22 projects, Top 10 key contributions">41 个外部 PR，22 个贡献项目，Top 10 重点贡献项目</p>
+        <section class="contributions">
+            <!-- 项目列表 -->
+            <div class="projects-grid">
+                <div class="project-item">
+                    <div class="project-rank">1</div>
+                    <div class="project-name">
+                        <a href="https://github.com/lief-project/LIEF" target="_blank">lief-project/LIEF</a>
+                        <span class="project-prs">6 PRs</span>
+                    </div>
+                    <div class="project-field" data-zh="二进制分析" data-en="Binary Analysis">二进制分析</div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-rank">2</div>
+                    <div class="project-name">
+                        <a href="https://github.com/unicorn-engine/unicorn" target="_blank">unicorn-engine/unicorn</a>
+                        <span class="project-prs">4 PRs</span>
+                    </div>
+                    <div class="project-field" data-zh="模拟器/Fuzzing" data-en="Emulator/Fuzzing">模拟器/Fuzzing</div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-rank">3</div>
+                    <div class="project-name">
+                        <a href="https://github.com/horsicq/Formats" target="_blank">horsicq/Formats</a>
+                        <span class="project-prs">3 PRs</span>
+                    </div>
+                    <div class="project-field" data-zh="文件格式检测" data-en="File Format Detection">文件格式检测</div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-rank">4</div>
+                    <div class="project-name">
+                        <a href="https://github.com/quarkslab/binbloom" target="_blank">quarkslab/binbloom</a>
+                        <span class="project-prs">2 PRs</span>
+                    </div>
+                    <div class="project-field" data-zh="二进制分析" data-en="Binary Analysis">二进制分析</div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-rank">5</div>
+                    <div class="project-name">
+                        <a href="https://github.com/capstone-engine/capstone" target="_blank">capstone-engine/capstone</a>
+                        <span class="project-prs">1 PR</span>
+                    </div>
+                    <div class="project-field" data-zh="反汇编框架" data-en="Disassembler Framework">反汇编框架</div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-rank">6</div>
+                    <div class="project-name">
+                        <a href="https://github.com/googleprojectzero/TinyInst" target="_blank">googleprojectzero/TinyInst</a>
+                        <span class="project-prs">1 PR</span>
+                    </div>
+                    <div class="project-field" data-zh="动态分析" data-en="Dynamic Analysis">动态分析</div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-rank">7</div>
+                    <div class="project-name">
+                        <a href="https://github.com/Samsung/cotopaxi" target="_blank">Samsung/cotopaxi</a>
+                        <span class="project-prs">1 PR</span>
+                    </div>
+                    <div class="project-field" data-zh="协议安全测试" data-en="Protocol Security Testing">协议安全测试</div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-rank">8</div>
+                    <div class="project-name">
+                        <a href="https://github.com/ReFirmLabs/binwalk" target="_blank">ReFirmLabs/binwalk</a>
+                        <span class="project-prs">1 PR</span>
+                    </div>
+                    <div class="project-field" data-zh="固件分析" data-en="Firmware Analysis">固件分析</div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-rank">9</div>
+                    <div class="project-name">
+                        <a href="https://github.com/TASEmulators/fceux" target="_blank">TASEmulators/fceux</a>
+                        <span class="project-prs">1 PR</span>
+                    </div>
+                    <div class="project-field" data-zh="模拟器" data-en="Emulator">模拟器</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GitHub 个人创建项目 -->
+        <section class="personal-projects">
+            <h2 class="personal-projects-title" data-zh="GitHub 个人创建项目" data-en="Personal GitHub Projects">GitHub 个人创建项目</h2>
+            <p class="personal-projects-desc" data-zh="个人创建项目请直接访问个人主页。欢迎加入项目，一起成长！" data-en="For personal projects, please visit my GitHub profile directly. Welcome to join the projects and grow together!">个人创建项目请直接访问个人主页。欢迎加入项目，一起成长！</p>
+            <a href="https://github.com/secnotes" class="github-link" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span data-zh="访问 GitHub 主页" data-en="Visit GitHub Profile">访问 GitHub 主页</span>
+            </a>
         </section>
 
         <!-- 页脚 -->
@@ -543,6 +872,38 @@
 
         // 可选：每隔一段时间切换背景图片（如果需要）
         // setInterval(setRandomBackground, 30000); // 每 30 秒切换一次
+
+        // 语言切换功能
+        let currentLang = 'zh';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'zh' ? 'en' : 'zh';
+
+            // 更新按钮文字
+            document.getElementById('langText').textContent = currentLang === 'zh' ? 'EN' : '中文';
+
+            // 获取所有需要翻译的元素
+            const elements = document.querySelectorAll('[data-zh][data-en]');
+
+            elements.forEach(el => {
+                if (currentLang === 'en') {
+                    el.textContent = el.getAttribute('data-en');
+                } else {
+                    el.textContent = el.getAttribute('data-zh');
+                }
+            });
+
+            // 保存到 localStorage
+            localStorage.setItem('preferredLang', currentLang);
+        }
+
+        // 页面加载时恢复语言设置
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLang') || 'zh';
+            if (savedLang === 'en') {
+                toggleLanguage();
+            }
+        });
     </script>
 </body>
 </html>

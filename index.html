@@ -19,6 +19,109 @@
             overflow-x: hidden;
         }
 
+        /* 白天主题样式 */
+        body.light-theme {
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .light-theme .overlay {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .light-theme .card {
+            background: rgba(255, 255, 255, 0.85);
+            color: #333;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .light-theme .card:hover {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .light-theme .card h3,
+        .light-theme .card p {
+            color: #333;
+        }
+
+        .light-theme .card-title {
+            color: #2c3e50;
+        }
+
+        .light-theme .card-desc {
+            color: #555;
+        }
+
+        .light-theme .card-desc-en {
+            color: #777;
+        }
+
+        .light-theme .footer-link {
+            color: #333;
+        }
+
+        .light-theme .social-links a {
+            color: #333;
+        }
+
+        .light-theme .testimonials::before,
+        .light-theme .testimonials::after {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .light-theme .testimonials-title {
+            background: linear-gradient(to bottom, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 100%);
+            color: #333;
+        }
+
+        .light-theme .testimonial-text {
+            color: #555;
+        }
+
+        .light-theme .testimonial-author {
+            color: #777;
+        }
+
+        .light-theme .project-item {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .light-theme .project-item:hover {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .light-theme .project-name a {
+            color: #333;
+        }
+
+        .light-theme .contributions-title {
+            background: linear-gradient(to bottom, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 100%);
+            color: #333;
+        }
+
+        .light-theme .github-link {
+            color: #333;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .light-theme .github-link:hover {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: rgba(0, 0, 0, 0.2);
+            color: #2c3e50;
+        }
+
+        .light-theme .bio {
+            color: #555;
+        }
+
+        .light-theme .bio-en {
+            color: #777;
+        }
+
         /* 背景图片容器 */
         .background {
             position: fixed;
@@ -417,6 +520,17 @@
             opacity: 0.8;
         }
 
+        .project-stars {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
         .project-field {
             font-size: 0.85rem;
             opacity: 0.7;
@@ -589,7 +703,24 @@
             gap: 6px;
         }
 
-        .lang-switch-btn:hover {
+        .theme-switch-btn {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 8px 16px;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .lang-switch-btn:hover,
+        .theme-switch-btn:hover {
             background: rgba(255, 255, 255, 0.25);
             border-color: rgba(255, 255, 255, 0.35);
             transform: translateY(-2px);
@@ -623,6 +754,12 @@
 
     <!-- 语言切换按钮 -->
     <div class="lang-switch">
+        <button class="theme-switch-btn" id="themeSwitch" onclick="toggleTheme()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <span id="themeText">🌙</span>
+        </button>
         <button class="lang-switch-btn" id="langSwitch" onclick="toggleLanguage()">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"></circle>
@@ -640,7 +777,7 @@
             <div class="avatar">👨‍💻</div>
             <h1 class="name">Security Notes</h1>
             <div class="bio">
-                <p data-zh="一名网络安全研究者的安全笔记，包括情报收集、安全工具和安全博客。希望能降低安全研究的门槛，保持好奇，持续学习，与君共勉" data-en="Personal security notes from a cybersecurity researcher, including intelligence gathering, security tools, and security blogs. Hope to lower the threshold for security research, stay curious, keep learning, and encourage each other.">一名网络安全研究者的安全笔记，包括情报收集、安全工具和安全博客。希望能降低安全研究的门槛，保持好奇，持续学习，与君共勉</p>
+                <p data-zh="一名网络安全研究者的安全笔记，包括情报收集、安全工具和安全博客。" data-en="Personal security notes from a cybersecurity researcher, including intelligence gathering, security tools, and security blogs.">一名网络安全研究者的安全笔记，包括情报收集、安全工具和安全博客。</p>
             </div>
         </header>
 
@@ -721,7 +858,7 @@
                     <div class="project-rank">1</div>
                     <div class="project-name">
                         <a href="https://github.com/lief-project/LIEF" target="_blank">lief-project/LIEF</a>
-                        <span class="project-prs">6 PRs</span>
+                        <span class="project-stars">⭐ 6.2k</span>
                     </div>
                     <div class="project-field" data-zh="二进制分析" data-en="Binary Analysis">二进制分析</div>
                 </div>
@@ -730,7 +867,7 @@
                     <div class="project-rank">2</div>
                     <div class="project-name">
                         <a href="https://github.com/unicorn-engine/unicorn" target="_blank">unicorn-engine/unicorn</a>
-                        <span class="project-prs">4 PRs</span>
+                        <span class="project-stars">⭐ 7.2k</span>
                     </div>
                     <div class="project-field" data-zh="模拟器/Fuzzing" data-en="Emulator/Fuzzing">模拟器/Fuzzing</div>
                 </div>
@@ -739,7 +876,7 @@
                     <div class="project-rank">3</div>
                     <div class="project-name">
                         <a href="https://github.com/horsicq/Formats" target="_blank">horsicq/Formats</a>
-                        <span class="project-prs">3 PRs</span>
+                        <span class="project-stars">⭐ 1.4k</span>
                     </div>
                     <div class="project-field" data-zh="文件格式检测" data-en="File Format Detection">文件格式检测</div>
                 </div>
@@ -748,7 +885,7 @@
                     <div class="project-rank">4</div>
                     <div class="project-name">
                         <a href="https://github.com/quarkslab/binbloom" target="_blank">quarkslab/binbloom</a>
-                        <span class="project-prs">2 PRs</span>
+                        <span class="project-stars">⭐ 142</span>
                     </div>
                     <div class="project-field" data-zh="二进制分析" data-en="Binary Analysis">二进制分析</div>
                 </div>
@@ -757,7 +894,7 @@
                     <div class="project-rank">5</div>
                     <div class="project-name">
                         <a href="https://github.com/capstone-engine/capstone" target="_blank">capstone-engine/capstone</a>
-                        <span class="project-prs">1 PR</span>
+                        <span class="project-stars">⭐ 9.1k</span>
                     </div>
                     <div class="project-field" data-zh="反汇编框架" data-en="Disassembler Framework">反汇编框架</div>
                 </div>
@@ -766,16 +903,16 @@
                     <div class="project-rank">6</div>
                     <div class="project-name">
                         <a href="https://github.com/googleprojectzero/TinyInst" target="_blank">googleprojectzero/TinyInst</a>
-                        <span class="project-prs">1 PR</span>
+                        <span class="project-stars">⭐ 2.8k</span>
                     </div>
-                    <div class="project-field" data-zh="动态分析" data-en="Dynamic Analysis">动态分析</div>
+                    <div class="project-field" data-zh="二进制重写" data-en="Binary Rewriting">二进制重写</div>
                 </div>
 
                 <div class="project-item">
                     <div class="project-rank">7</div>
                     <div class="project-name">
                         <a href="https://github.com/Samsung/cotopaxi" target="_blank">Samsung/cotopaxi</a>
-                        <span class="project-prs">1 PR</span>
+                        <span class="project-stars">⭐ 429</span>
                     </div>
                     <div class="project-field" data-zh="协议安全测试" data-en="Protocol Security Testing">协议安全测试</div>
                 </div>
@@ -784,7 +921,7 @@
                     <div class="project-rank">8</div>
                     <div class="project-name">
                         <a href="https://github.com/ReFirmLabs/binwalk" target="_blank">ReFirmLabs/binwalk</a>
-                        <span class="project-prs">1 PR</span>
+                        <span class="project-stars">⭐ 7.4k</span>
                     </div>
                     <div class="project-field" data-zh="固件分析" data-en="Firmware Analysis">固件分析</div>
                 </div>
@@ -793,7 +930,7 @@
                     <div class="project-rank">9</div>
                     <div class="project-name">
                         <a href="https://github.com/TASEmulators/fceux" target="_blank">TASEmulators/fceux</a>
-                        <span class="project-prs">1 PR</span>
+                        <span class="project-stars">⭐ 332</span>
                     </div>
                     <div class="project-field" data-zh="模拟器" data-en="Emulator">模拟器</div>
                 </div>
@@ -821,6 +958,9 @@
     <script>
         // 图片目录配置
         const IMAGE_FOLDER = 'images/';
+
+        // 当前主题状态
+        let currentTheme = 'dark';
 
         // 支持的图片格式
         const SUPPORTED_FORMATS = ['.jpg', '.jpeg', '.png', '.webp', '.gif'];
@@ -897,11 +1037,45 @@
             localStorage.setItem('preferredLang', currentLang);
         }
 
+        // 主题切换功能
+        function toggleTheme() {
+            const body = document.body;
+
+            if (currentTheme === 'dark') {
+                // 切换到白天主题
+                body.classList.add('light-theme');
+                document.getElementById('themeText').textContent = '☀️';
+                currentTheme = 'light';
+            } else {
+                // 切换到夜间主题
+                body.classList.remove('light-theme');
+                document.getElementById('themeText').textContent = '🌙';
+                currentTheme = 'dark';
+            }
+
+            // 保存主题偏好到 localStorage
+            localStorage.setItem('preferredTheme', currentTheme);
+        }
+
         // 页面加载时恢复语言设置
         document.addEventListener('DOMContentLoaded', function() {
             const savedLang = localStorage.getItem('preferredLang') || 'zh';
             if (savedLang === 'en') {
+                currentLang = 'zh'; // 需要翻转，因为toggleLanguage会再次翻转
                 toggleLanguage();
+            }
+
+            // 页面加载时恢复主题设置
+            const savedTheme = localStorage.getItem('preferredTheme') || 'dark';
+            const body = document.body;
+
+            if (savedTheme === 'light') {
+                body.classList.add('light-theme');
+                document.getElementById('themeText').textContent = '☀️';
+                currentTheme = 'light';
+            } else {
+                document.getElementById('themeText').textContent = '🌙';
+                currentTheme = 'dark';
             }
         });
     </script>

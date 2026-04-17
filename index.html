@@ -92,7 +92,9 @@
 
         /* Hero Section */
         .hero {
-            background: var(--gradient-primary);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             padding: 80px 0;
             text-align: center;
             color: white;
@@ -107,8 +109,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: var(--hero-bg-overlay);
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 0;
         }
 
         .hero-content {
@@ -179,7 +181,7 @@
         /* Cards Grid */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
         }
 
@@ -1037,6 +1039,24 @@
 
         // Initialize on load
         initTheme();
+
+        // Random hero background
+        const heroImages = [
+            'images/landscape1.jpg',
+            'images/landscape2.jpg',
+            'images/landscape3.jpg',
+            'images/landscape4.jpg',
+            'images/landscape5.jpg',
+            'images/landscape6.jpg'
+        ];
+
+        function setRandomHeroBackground() {
+            const randomIndex = Math.floor(Math.random() * heroImages.length);
+            const hero = document.querySelector('.hero');
+            hero.style.backgroundImage = `url('${heroImages[randomIndex]}')`;
+        }
+
+        setRandomHeroBackground();
 
         // Typing animation
         const typingTexts = {

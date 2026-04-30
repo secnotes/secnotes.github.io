@@ -650,6 +650,130 @@
         .spacer {
             height: 60px;
         }
+
+        /* Online Tools Special Style */
+        .tools-bar {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 20px 0;
+        }
+
+        .tool-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 220px;
+            height: 180px;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .tool-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-color);
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .tool-item:hover::before {
+            opacity: 1;
+        }
+
+        .tool-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .tool-icon-large {
+            font-size: 3rem;
+            margin-bottom: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .tool-item:hover .tool-icon-large {
+            transform: scale(1.1);
+        }
+
+        .tool-title {
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .tool-desc {
+            font-size: 0.75rem;
+            text-align: center;
+            color: var(--text-secondary);
+            max-width: 180px;
+            line-height: 1.4;
+        }
+
+        .tool-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tool-item:hover .tool-badge {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .tools-bar {
+                gap: 12px;
+            }
+
+            .tool-item {
+                width: calc(50% - 6px);
+                height: 160px;
+            }
+
+            .tool-icon-large {
+                font-size: 2.5rem;
+            }
+
+            .tool-title {
+                font-size: 0.9rem;
+            }
+
+            .tool-desc {
+                font-size: 0.7rem;
+                max-width: 140px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tool-item {
+                width: 100%;
+                height: 140px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -660,6 +784,7 @@
             <div class="nav-right">
                 <div class="nav-links">
                     <a href="#threat-intel" data-i18n="nav.intel">威胁情报</a>
+                    <a href="#online-tools" data-i18n="nav.online">在线工具</a>
                     <a href="#contributions" data-i18n="nav.contributions">贡献项目</a>
                     <a href="#tools" data-i18n="nav.tools">维护工具</a>
                     <a href="#testimonials" data-i18n="nav.testimonials">AI 评价</a>
@@ -746,6 +871,47 @@
                     <h3 data-i18n="intel.p6.title">个人博客</h3>
                     <p data-i18n="intel.p6.desc">最初的安全笔记放在 CSDN 上，也零星在其他专业安全平台上写过博客。</p>
                     <span class="card-link" data-i18n="common.visit">访问博客</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Online Tools Section -->
+    <section id="online-tools" class="section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="online.title">在线工具</h2>
+            <p class="section-subtitle" data-i18n="online.subtitle">无需安装，浏览器直接使用的在线安全工具</p>
+            <div class="tools-bar">
+                <!-- Tool 1 -->
+                <a href="https://secnotes.github.io/onlineasm" class="tool-item" target="_blank">
+                    <span class="tool-badge">ASM</span>
+                    <div class="tool-icon-large">🔧</div>
+                    <div class="tool-title" data-i18n="online.p1.title">在线反汇编/汇编</div>
+                    <div class="tool-desc" data-i18n="online.p1.desc.short">x86/ARM/MIPS 多架构支持</div>
+                </a>
+
+                <!-- Tool 2 -->
+                <a href="https://secnotes.github.io/onlinecrypto" class="tool-item" target="_blank">
+                    <span class="tool-badge">CRYPTO</span>
+                    <div class="tool-icon-large">🔐</div>
+                    <div class="tool-title" data-i18n="online.p2.title">在线加解密工具</div>
+                    <div class="tool-desc" data-i18n="online.p2.desc.short">AES/DES/RSA/Base64等</div>
+                </a>
+
+                <!-- Tool 3 -->
+                <a href="https://secnotes.github.io/onlinedict" class="tool-item" target="_blank">
+                    <span class="tool-badge">DICT</span>
+                    <div class="tool-icon-large">📝</div>
+                    <div class="tool-title" data-i18n="online.p3.title">密码字典生成器</div>
+                    <div class="tool-desc" data-i18n="online.p3.desc.short">多模式字典生成</div>
+                </a>
+
+                <!-- Tool 4 -->
+                <a href="https://secnotes.github.io/hoapi/" class="tool-item" target="_blank">
+                    <span class="tool-badge">API</span>
+                    <div class="tool-icon-large">📱</div>
+                    <div class="tool-title" data-i18n="online.p4.title">HarmonyOS API</div>
+                    <div class="tool-desc" data-i18n="online.p4.desc.short">API Level 参考表</div>
                 </a>
             </div>
         </div>
@@ -853,12 +1019,29 @@
             zh: {
                 // Navigation
                 'nav.intel': '威胁情报',
+                'nav.online': '在线工具',
                 'nav.testimonials': 'AI 评价',
                 'nav.contributions': '贡献项目',
                 'nav.tools': '维护工具',
 
                 // Hero
                 'hero.bio': '一名网络安全研究者的安全笔记，包括情报收集、安全工具和安全博客。',
+
+                // Online Tools
+                'online.title': '在线工具',
+                'online.subtitle': '无需安装，浏览器直接使用的在线安全工具',
+                'online.p1.title': '在线反汇编/汇编',
+                'online.p1.desc': '支持多种架构的在线反汇编和汇编工具，包括 x86、ARM、MIPS 等，实时转换机器码与汇编指令。',
+                'online.p1.desc.short': 'x86/ARM/MIPS 多架构支持',
+                'online.p2.title': '在线加解密工具',
+                'online.p2.desc': '支持多种加密算法的在线加解密工具，包括 AES、DES、RSA、Base64、MD5、SHA 等，方便快速进行加密解密操作。',
+                'online.p2.desc.short': 'AES/DES/RSA/Base64等',
+                'online.p3.title': '密码字典生成器',
+                'online.p3.desc': '多种模式的密码字典生成工具，支持社会工程学字典、组合生成、字符集生成、模式生成等功能。',
+                'online.p3.desc.short': '多模式字典生成',
+                'online.p4.title': 'HarmonyOS API',
+                'online.p4.desc': 'HarmonyOS API 级别参考表，展示各 API Level 的版本信息、发布状态、使用率统计等详细数据。',
+                'online.p4.desc.short': 'API Level 参考表',
 
                 // Threat Intelligence
                 'intel.title': '威胁情报',
@@ -907,12 +1090,29 @@
             en: {
                 // Navigation
                 'nav.intel': 'Threat Intel',
+                'nav.online': 'Online Tools',
                 'nav.testimonials': 'AI Reviews',
                 'nav.contributions': 'Contributions',
                 'nav.tools': 'My Tools',
 
                 // Hero
                 'hero.bio': 'Personal security notes from a cybersecurity researcher, including intelligence gathering, security tools, and security blogs.',
+
+                // Online Tools
+                'online.title': 'Online Tools',
+                'online.subtitle': 'Browser-based security tools, no installation required',
+                'online.p1.title': 'Online Disassembler/Assembler',
+                'online.p1.desc': 'Online disassembly and assembly tool supporting multiple architectures including x86, ARM, MIPS, with real-time machine code and assembly instruction conversion.',
+                'online.p1.desc.short': 'x86/ARM/MIPS Multi-Arch',
+                'online.p2.title': 'Online Crypto Tools',
+                'online.p2.desc': 'Online encryption/decryption tool supporting multiple algorithms including AES, DES, RSA, Base64, MD5, SHA for quick cryptographic operations.',
+                'online.p2.desc.short': 'AES/DES/RSA/Base64 etc',
+                'online.p3.title': 'Password Dictionary Generator',
+                'online.p3.desc': 'Multi-mode password dictionary generation tool supporting social engineering dictionaries, combination generation, charset generation, and pattern generation.',
+                'online.p3.desc.short': 'Multi-Mode Generator',
+                'online.p4.title': 'HarmonyOS API',
+                'online.p4.desc': 'HarmonyOS API level reference table showing version information, release status, usage statistics, and detailed data for each API Level.',
+                'online.p4.desc.short': 'API Level Reference',
 
                 // Threat Intelligence
                 'intel.title': 'Threat Intelligence',
@@ -1167,7 +1367,7 @@
             if (!section) return;
 
             // Get all animatable elements in the section
-            const elements = section.querySelectorAll('.card, .testimonial-item, .table-container');
+            const elements = section.querySelectorAll('.card, .testimonial-item, .table-container, .tool-item');
 
             // Temporarily unobserve elements
             elements.forEach(el => observer.unobserve(el));
@@ -1178,6 +1378,8 @@
                 el.style.opacity = '0';
                 if (sectionId === '#testimonials') {
                     el.style.transform = 'translateX(-30px)';
+                } else if (sectionId === '#online-tools') {
+                    el.style.transform = 'translateY(30px)';
                 } else {
                     el.style.transform = 'translateY(20px)';
                 }
@@ -1188,7 +1390,14 @@
 
             // Trigger animations with stagger effect
             elements.forEach((el, index) => {
-                const delay = sectionId === '#testimonials' ? index * 150 : index * 80;
+                let delay;
+                if (sectionId === '#testimonials') {
+                    delay = index * 150;
+                } else if (sectionId === '#online-tools') {
+                    delay = index * 100;
+                } else {
+                    delay = index * 80;
+                }
                 setTimeout(() => {
                     el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
                     el.style.opacity = '1';
@@ -1199,7 +1408,9 @@
             // Re-observe elements after animation completes
             const totalTime = sectionId === '#testimonials'
                 ? (elements.length - 1) * 150 + 650
-                : (elements.length - 1) * 80 + 650;
+                : sectionId === '#online-tools'
+                    ? (elements.length - 1) * 100 + 650
+                    : (elements.length - 1) * 80 + 650;
             setTimeout(() => {
                 elements.forEach(el => observer.observe(el));
             }, totalTime);
@@ -1224,6 +1435,14 @@
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Animation for online tools
+        document.querySelectorAll('.tool-item').forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = `opacity 0.6s ease-out ${index * 0.1}s, transform 0.6s ease-out ${index * 0.1}s`;
             observer.observe(el);
         });
 

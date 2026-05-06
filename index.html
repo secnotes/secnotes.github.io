@@ -656,8 +656,28 @@
             display: flex;
             gap: 16px;
             justify-content: center;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
+            overflow-x: auto;
             padding: 20px 0;
+            scrollbar-width: thin;
+        }
+
+        .tools-bar::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .tools-bar::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+            border-radius: 3px;
+        }
+
+        .tools-bar::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 3px;
+        }
+
+        .tools-bar::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
         }
 
         .tool-item {
@@ -747,11 +767,14 @@
         @media (max-width: 768px) {
             .tools-bar {
                 gap: 12px;
+                justify-content: flex-start;
+                padding: 20px 24px;
             }
 
             .tool-item {
-                width: calc(50% - 6px);
+                width: 180px;
                 height: 160px;
+                flex-shrink: 0;
             }
 
             .tool-icon-large {
@@ -769,8 +792,12 @@
         }
 
         @media (max-width: 480px) {
+            .tools-bar {
+                padding: 20px 16px;
+            }
+
             .tool-item {
-                width: 100%;
+                width: 160px;
                 height: 140px;
             }
         }
@@ -913,6 +940,14 @@
                     <div class="tool-title" data-i18n="online.p4.title">HarmonyOS API</div>
                     <div class="tool-desc" data-i18n="online.p4.desc.short">API Level 参考表</div>
                 </a>
+
+                <!-- Tool 5 -->
+                <a href="https://secnotes.github.io/syscalls/" class="tool-item" target="_blank">
+                    <span class="tool-badge">SYSCALL</span>
+                    <div class="tool-icon-large">📋</div>
+                    <div class="tool-title" data-i18n="online.p5.title">系统调用查询表</div>
+                    <div class="tool-desc" data-i18n="online.p5.desc.short">多平台系统调用号对照</div>
+                </a>
             </div>
         </div>
     </section>
@@ -1042,6 +1077,9 @@
                 'online.p4.title': 'HarmonyOS API',
                 'online.p4.desc': 'HarmonyOS API 级别参考表，展示各 API Level 的版本信息、发布状态、使用率统计等详细数据。',
                 'online.p4.desc.short': 'API Level 参考表',
+                'online.p5.title': '系统调用查询表',
+                'online.p5.desc': '多平台系统调用号对照表，支持 Linux、Windows、FreeBSD 等操作系统的系统调用号快速查询。',
+                'online.p5.desc.short': '多平台系统调用号对照',
 
                 // Threat Intelligence
                 'intel.title': '威胁情报',
@@ -1113,6 +1151,9 @@
                 'online.p4.title': 'HarmonyOS API',
                 'online.p4.desc': 'HarmonyOS API level reference table showing version information, release status, usage statistics, and detailed data for each API Level.',
                 'online.p4.desc.short': 'API Level Reference',
+                'online.p5.title': 'Syscall Reference Table',
+                'online.p5.desc': 'Multi-platform syscall number reference table, supporting quick lookup of syscall numbers for Linux, Windows, FreeBSD and other operating systems.',
+                'online.p5.desc.short': 'Multi-Platform Syscall Numbers',
 
                 // Threat Intelligence
                 'intel.title': 'Threat Intelligence',

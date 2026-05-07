@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             --primary-color: #6366f1;
@@ -25,7 +26,7 @@
             --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             --nav-bg: rgba(255, 255, 255, 0.95);
             --hero-bg-overlay: rgba(255, 255, 255, 0.05);
-            --footer-bg: #f1f5f9;
+            --footer-bg: #e2e8f0;
             --footer-text: #64748b;
         }
 
@@ -121,15 +122,19 @@
         .avatar {
             width: 120px;
             height: 120px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 60px;
             margin: 0 auto 24px;
             backdrop-filter: blur(10px);
             border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .avatar i {
+            font-size: 60px;
+            color: white;
         }
 
         .hero h1 {
@@ -195,7 +200,8 @@
             transition: all 0.3s ease;
             text-decoration: none;
             color: inherit;
-            display: block;
+            display: flex;
+            flex-direction: column;
         }
 
         .card:hover {
@@ -220,6 +226,7 @@
             color: var(--text-secondary);
             font-size: 0.95rem;
             line-height: 1.7;
+            flex-grow: 1;
         }
 
         .card-link {
@@ -229,7 +236,7 @@
             color: var(--primary-color);
             font-weight: 500;
             font-size: 0.9rem;
-            margin-top: 12px;
+            margin-top: auto;
         }
 
         .card-link::after {
@@ -652,12 +659,19 @@
         }
 
         /* Online Tools Special Style */
+        .tools-wrapper {
+            position: relative;
+            background: var(--bg-secondary);
+            padding: 20px 60px;
+        }
+
         .tools-bar {
             display: flex;
             gap: 16px;
             justify-content: center;
             flex-wrap: nowrap;
             overflow-x: auto;
+            overflow-y: hidden;
             padding: 20px 0;
             scrollbar-width: thin;
         }
@@ -696,22 +710,6 @@
             position: relative;
             overflow: hidden;
             cursor: pointer;
-        }
-
-        .tool-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--primary-color);
-            opacity: 0.6;
-            transition: opacity 0.3s ease;
-        }
-
-        .tool-item:hover::before {
-            opacity: 1;
         }
 
         .tool-item:hover {
@@ -764,11 +762,66 @@
             color: white;
         }
 
+        /* Arrow Buttons */
+        .tools-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.2s;
+            color: var(--text-secondary);
+        }
+
+        .tools-arrow:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .tools-arrow svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .tools-arrow-left {
+            left: 10px;
+        }
+
+        .tools-arrow-right {
+            right: 10px;
+        }
+
         @media (max-width: 768px) {
+            .tools-wrapper {
+                padding: 20px 45px;
+            }
+
+            .tools-arrow {
+                width: 36px;
+                height: 36px;
+            }
+
+            .tools-arrow-left {
+                left: 5px;
+            }
+
+            .tools-arrow-right {
+                right: 5px;
+            }
+
             .tools-bar {
                 gap: 12px;
                 justify-content: flex-start;
-                padding: 20px 24px;
+                padding: 10px 0;
             }
 
             .tool-item {
@@ -792,8 +845,17 @@
         }
 
         @media (max-width: 480px) {
+            .tools-wrapper {
+                padding: 15px 40px;
+            }
+
+            .tools-arrow {
+                width: 32px;
+                height: 32px;
+            }
+
             .tools-bar {
-                padding: 20px 16px;
+                padding: 8px 0;
             }
 
             .tool-item {
@@ -807,7 +869,7 @@
     <!-- Navigation -->
     <nav class="nav">
         <div class="container nav-content">
-            <a href="#" class="nav-brand">👨‍💻 Security Notes</a>
+            <a href="#" class="nav-brand">Security Notes</a>
             <div class="nav-right">
                 <div class="nav-links">
                     <a href="#threat-intel" data-i18n="nav.intel">威胁情报</a>
@@ -838,7 +900,9 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-content">
-            <div class="avatar">👨‍💻</div>
+            <div class="avatar">
+                <i class="fa-solid fa-face-laugh-wink"></i>
+            </div>
             <h1>Security Notes</h1>
             <div class="bio">
                 <p><span id="typing-text" class="typing-text"></span></p>
@@ -908,7 +972,14 @@
         <div class="container">
             <h2 class="section-title" data-i18n="online.title">在线工具</h2>
             <p class="section-subtitle" data-i18n="online.subtitle">无需安装，浏览器直接使用的在线安全工具</p>
-            <div class="tools-bar">
+        </div>
+        <div class="tools-wrapper">
+            <button class="tools-arrow tools-arrow-left" onclick="scrollTools(-1)" aria-label="向左滑动">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+            <div class="tools-bar" id="tools-bar">
                 <!-- Tool 1 -->
                 <a href="https://secnotes.github.io/onlineasm" class="tool-item" target="_blank">
                     <span class="tool-badge">ASM</span>
@@ -949,6 +1020,11 @@
                     <div class="tool-desc" data-i18n="online.p5.desc.short">多平台系统调用号对照</div>
                 </a>
             </div>
+            <button class="tools-arrow tools-arrow-right" onclick="scrollTools(1)" aria-label="向右滑动">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
         </div>
     </section>
 
@@ -1494,6 +1570,51 @@
             el.style.transition = `opacity 0.6s ease-out ${index * 0.15}s, transform 0.6s ease-out ${index * 0.15}s`;
             observer.observe(el);
         });
+
+        // Online tools scroll with arrows
+        function scrollTools(direction) {
+            const toolsBar = document.getElementById('tools-bar');
+            const scrollAmount = 240; // width of one card + gap
+            toolsBar.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        // Drag to scroll for tools bar
+        const toolsBar = document.getElementById('tools-bar');
+        let isDragging = false;
+        let startX = 0;
+        let scrollLeft = 0;
+
+        toolsBar.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            toolsBar.style.cursor = 'grabbing';
+            startX = e.pageX - toolsBar.offsetLeft;
+            scrollLeft = toolsBar.scrollLeft;
+            e.preventDefault();
+        });
+
+        toolsBar.addEventListener('mouseleave', () => {
+            isDragging = false;
+            toolsBar.style.cursor = 'grab';
+        });
+
+        toolsBar.addEventListener('mouseup', () => {
+            isDragging = false;
+            toolsBar.style.cursor = 'grab';
+        });
+
+        toolsBar.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - toolsBar.offsetLeft;
+            const walk = (x - startX) * 1.5; // scroll speed multiplier
+            toolsBar.scrollLeft = scrollLeft - walk;
+        });
+
+        // Set initial cursor style
+        toolsBar.style.cursor = 'grab';
 
         // Initial render
         renderTables();

@@ -501,6 +501,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .card {
+                min-width: 0;
+            }
+
             th, td {
                 padding: 12px 16px;
             }
@@ -651,6 +655,15 @@
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+            }
+
+            .nav-right {
+                gap: 12px;
+            }
+
+            .lang-toggle {
+                padding: 6px 12px;
+                font-size: 0.85rem;
             }
         }
 

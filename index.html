@@ -672,6 +672,30 @@
         }
 
         /* Online Tools Special Style */
+        .tools-category {
+            max-width: 1200px;
+            margin: 24px auto 8px;
+            padding: 0 24px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .tools-category::before,
+        .tools-category::after {
+            content: '';
+            flex: 1;
+            max-width: 120px;
+            height: 1px;
+            background: var(--border-color);
+        }
+
         .tools-wrapper {
             position: relative;
             background: var(--bg-secondary);
@@ -687,6 +711,8 @@
             overflow-y: hidden;
             padding: 20px 0;
             scrollbar-width: thin;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .tools-bar::-webkit-scrollbar {
@@ -984,10 +1010,10 @@
     <section id="online-tools" class="section">
         <div class="container">
             <h2 class="section-title" data-i18n="online.title">在线工具</h2>
-            <p class="section-subtitle" data-i18n="online.subtitle">无需安装，浏览器直接使用的在线安全工具</p>
         </div>
+        <div class="tools-category container" data-i18n="online.category.security">安全工具</div>
         <div class="tools-wrapper">
-            <button class="tools-arrow tools-arrow-left" onclick="scrollTools(-1)" aria-label="向左滑动">
+            <button class="tools-arrow tools-arrow-left" onclick="scrollTools(-1, 'tools-bar')" aria-label="向左滑动">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                 </svg>
@@ -1032,8 +1058,63 @@
                     <div class="tool-title" data-i18n="online.p5.title">系统调用查询表</div>
                     <div class="tool-desc" data-i18n="online.p5.desc.short">多平台系统调用号对照</div>
                 </a>
+
+                <!-- Tool 6 -->
+                <a href="https://secnotes.github.io/r2web/" class="tool-item" target="_blank">
+                    <span class="tool-badge">R2</span>
+                    <div class="tool-icon-large">🔍</div>
+                    <div class="tool-title" data-i18n="online.p10.title">在线 Radare2</div>
+                    <div class="tool-desc" data-i18n="online.p10.desc.short">浏览器内逆向分析</div>
+                </a>
             </div>
-            <button class="tools-arrow tools-arrow-right" onclick="scrollTools(1)" aria-label="向右滑动">
+            <button class="tools-arrow tools-arrow-right" onclick="scrollTools(1, 'tools-bar')" aria-label="向右滑动">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="tools-category container" data-i18n="online.category.life">生活工具</div>
+        <div class="tools-wrapper">
+            <button class="tools-arrow tools-arrow-left" onclick="scrollTools(-1, 'life-tools-bar')" aria-label="向左滑动">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+            <div class="tools-bar" id="life-tools-bar">
+                <!-- Life Tool 1 -->
+                <a href="https://secnotes.github.io/gaokao" class="tool-item" target="_blank">
+                    <span class="tool-badge">高考</span>
+                    <div class="tool-icon-large">🎓</div>
+                    <div class="tool-title" data-i18n="online.p6.title">高考工具</div>
+                    <div class="tool-desc" data-i18n="online.p6.desc.short">高考信息查询</div>
+                </a>
+
+                <!-- Life Tool 2 -->
+                <a href="https://secnotes.github.io/tax" class="tool-item" target="_blank">
+                    <span class="tool-badge">税务</span>
+                    <div class="tool-icon-large">💰</div>
+                    <div class="tool-title" data-i18n="online.p7.title">个税计算器</div>
+                    <div class="tool-desc" data-i18n="online.p7.desc.short">个人所得税计算</div>
+                </a>
+
+                <!-- Life Tool 3 -->
+                <a href="https://secnotes.github.io/calendar" class="tool-item" target="_blank">
+                    <span class="tool-badge">日历</span>
+                    <div class="tool-icon-large">📅</div>
+                    <div class="tool-title" data-i18n="online.p8.title">万年历</div>
+                    <div class="tool-desc" data-i18n="online.p8.desc.short">日历查询</div>
+                </a>
+
+                <!-- Life Tool 4 -->
+                <a href="https://secnotes.github.io/weather" class="tool-item" target="_blank">
+                    <span class="tool-badge">天气</span>
+                    <div class="tool-icon-large">⛅</div>
+                    <div class="tool-title" data-i18n="online.p9.title">天气查询</div>
+                    <div class="tool-desc" data-i18n="online.p9.desc.short">实时天气</div>
+                </a>
+            </div>
+            <button class="tools-arrow tools-arrow-right" onclick="scrollTools(1, 'life-tools-bar')" aria-label="向右滑动">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
@@ -1153,7 +1234,7 @@
 
                 // Online Tools
                 'online.title': '在线工具',
-                'online.subtitle': '无需安装，浏览器直接使用的在线安全工具',
+                'online.subtitle': '无需安装，浏览器直接使用的在线工具',
                 'online.p1.title': '在线反汇编/汇编',
                 'online.p1.desc': '支持多种架构的在线反汇编和汇编工具，包括 x86、ARM、MIPS 等，实时转换机器码与汇编指令。',
                 'online.p1.desc.short': 'x86/ARM/MIPS 多架构支持',
@@ -1169,6 +1250,29 @@
                 'online.p5.title': '系统调用查询表',
                 'online.p5.desc': '多平台系统调用号对照表，支持 Linux、Windows、FreeBSD 等操作系统的系统调用号快速查询。',
                 'online.p5.desc.short': '多平台系统调用号对照',
+
+                // Radare2 Web
+                'online.p10.title': '在线 Radare2',
+                'online.p10.desc': '基于 radare2 的在线逆向分析工具，在浏览器中即可进行反汇编、分析和二进制探索。',
+                'online.p10.desc.short': '浏览器内逆向分析',
+
+                // Online Tools Categories
+                'online.category.security': '安全工具',
+                'online.category.life': '生活工具',
+
+                // Life Tools
+                'online.p6.title': '高考工具',
+                'online.p6.desc': '高考相关信息查询工具，提供分数线、院校等数据查询。',
+                'online.p6.desc.short': '高考信息查询',
+                'online.p7.title': '个税计算器',
+                'online.p7.desc': '个人所得税计算工具，支持最新税率表，快速计算应纳税额。',
+                'online.p7.desc.short': '个人所得税计算',
+                'online.p8.title': '万年历',
+                'online.p8.desc': '万年历查询工具，支持节假日、农历等信息查询。',
+                'online.p8.desc.short': '日历查询',
+                'online.p9.title': '天气查询',
+                'online.p9.desc': '天气查询工具，查看各地实时天气与未来预报。',
+                'online.p9.desc.short': '实时天气',
 
                 // Threat Intelligence
                 'intel.title': '威胁情报',
@@ -1227,7 +1331,7 @@
 
                 // Online Tools
                 'online.title': 'Online Tools',
-                'online.subtitle': 'Browser-based security tools, no installation required',
+                'online.subtitle': 'Browser-based online tools, no installation required',
                 'online.p1.title': 'Online Disassembler/Assembler',
                 'online.p1.desc': 'Online disassembly and assembly tool supporting multiple architectures including x86, ARM, MIPS, with real-time machine code and assembly instruction conversion.',
                 'online.p1.desc.short': 'x86/ARM/MIPS Multi-Arch',
@@ -1243,6 +1347,29 @@
                 'online.p5.title': 'Syscall Reference Table',
                 'online.p5.desc': 'Multi-platform syscall number reference table, supporting quick lookup of syscall numbers for Linux, Windows, FreeBSD and other operating systems.',
                 'online.p5.desc.short': 'Multi-Platform Syscall Numbers',
+
+                // Radare2 Web
+                'online.p10.title': 'Online Radare2',
+                'online.p10.desc': 'Online reverse engineering tool based on radare2, letting you disassemble, analyze and explore binaries right in the browser.',
+                'online.p10.desc.short': 'In-Browser RE',
+
+                // Online Tools Categories
+                'online.category.security': 'Security Tools',
+                'online.category.life': 'Life Tools',
+
+                // Life Tools
+                'online.p6.title': 'Gaokao Tool',
+                'online.p6.desc': 'College entrance exam info lookup tool, providing score lines, colleges and more.',
+                'online.p6.desc.short': 'Gaokao Info Lookup',
+                'online.p7.title': 'Tax Calculator',
+                'online.p7.desc': 'Income tax calculator with the latest tax brackets to quickly compute payable tax.',
+                'online.p7.desc.short': 'Income Tax Calc',
+                'online.p8.title': 'Calendar',
+                'online.p8.desc': 'Perpetual calendar tool supporting holidays, lunar calendar and more.',
+                'online.p8.desc.short': 'Calendar Lookup',
+                'online.p9.title': 'Weather',
+                'online.p9.desc': 'Weather tool to check live weather and forecasts for any location.',
+                'online.p9.desc.short': 'Live Weather',
 
                 // Threat Intelligence
                 'intel.title': 'Threat Intelligence',
@@ -1585,8 +1712,8 @@
         });
 
         // Online tools scroll with arrows
-        function scrollTools(direction) {
-            const toolsBar = document.getElementById('tools-bar');
+        function scrollTools(direction, barId = 'tools-bar') {
+            const toolsBar = document.getElementById(barId);
             const scrollAmount = 240; // width of one card + gap
             toolsBar.scrollBy({
                 left: direction * scrollAmount,
@@ -1594,40 +1721,40 @@
             });
         }
 
-        // Drag to scroll for tools bar
-        const toolsBar = document.getElementById('tools-bar');
-        let isDragging = false;
-        let startX = 0;
-        let scrollLeft = 0;
+        // Drag to scroll for tools bars (applies to every .tools-bar)
+        document.querySelectorAll('.tools-bar').forEach(toolsBar => {
+            let isDragging = false;
+            let startX = 0;
+            let scrollLeft = 0;
 
-        toolsBar.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            toolsBar.style.cursor = 'grabbing';
-            startX = e.pageX - toolsBar.offsetLeft;
-            scrollLeft = toolsBar.scrollLeft;
-            e.preventDefault();
-        });
-
-        toolsBar.addEventListener('mouseleave', () => {
-            isDragging = false;
             toolsBar.style.cursor = 'grab';
-        });
 
-        toolsBar.addEventListener('mouseup', () => {
-            isDragging = false;
-            toolsBar.style.cursor = 'grab';
-        });
+            toolsBar.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                toolsBar.style.cursor = 'grabbing';
+                startX = e.pageX - toolsBar.offsetLeft;
+                scrollLeft = toolsBar.scrollLeft;
+                e.preventDefault();
+            });
 
-        toolsBar.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
-            const x = e.pageX - toolsBar.offsetLeft;
-            const walk = (x - startX) * 1.5; // scroll speed multiplier
-            toolsBar.scrollLeft = scrollLeft - walk;
-        });
+            toolsBar.addEventListener('mouseleave', () => {
+                isDragging = false;
+                toolsBar.style.cursor = 'grab';
+            });
 
-        // Set initial cursor style
-        toolsBar.style.cursor = 'grab';
+            toolsBar.addEventListener('mouseup', () => {
+                isDragging = false;
+                toolsBar.style.cursor = 'grab';
+            });
+
+            toolsBar.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.pageX - toolsBar.offsetLeft;
+                const walk = (x - startX) * 1.5; // scroll speed multiplier
+                toolsBar.scrollLeft = scrollLeft - walk;
+            });
+        });
 
         // Initial render
         renderTables();

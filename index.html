@@ -699,17 +699,17 @@
         .tools-wrapper {
             position: relative;
             background: var(--bg-secondary);
-            padding: 20px 60px;
+            padding: 20px 0;
         }
 
         .tools-bar {
             display: flex;
             gap: 16px;
-            justify-content: center;
+            justify-content: flex-start;
             flex-wrap: nowrap;
             overflow-x: auto;
             overflow-y: hidden;
-            padding: 20px 0;
+            padding: 20px 24px;
             scrollbar-width: thin;
             max-width: 1200px;
             margin: 0 auto;
@@ -740,6 +740,7 @@
             justify-content: center;
             width: 220px;
             height: 180px;
+            flex-shrink: 0;
             background: var(--bg-card);
             border: 2px solid var(--border-color);
             border-radius: 20px;
@@ -964,7 +965,7 @@
                 </a>
 
                 <!-- Project 2 -->
-                <a href="https://secnotes.github.io/dailycve/" class="card animate-fade-in" target="_blank">
+                <a href="https://secnotes.github.io/cvedaily/" class="card animate-fade-in" target="_blank">
                     <div class="card-icon">🔒</div>
                     <h3 data-i18n="intel.p2.title">CVE 漏洞追踪</h3>
                     <p data-i18n="intel.p2.desc">每日自动收集来自 MITRE 的最新漏洞信息，你可以从中轻松过滤出真正具有风险的漏洞。</p>
@@ -1112,6 +1113,14 @@
                     <div class="tool-icon-large">⛅</div>
                     <div class="tool-title" data-i18n="online.p9.title">天气查询</div>
                     <div class="tool-desc" data-i18n="online.p9.desc.short">实时天气</div>
+                </a>
+
+                <!-- Life Tool 5 -->
+                <a href="https://secnotes.github.io/travel/" class="tool-item" target="_blank">
+                    <span class="tool-badge">旅行</span>
+                    <div class="tool-icon-large">✈️</div>
+                    <div class="tool-title" data-i18n="online.p11.title">旅行工具</div>
+                    <div class="tool-desc" data-i18n="online.p11.desc.short">旅行信息查询</div>
                 </a>
             </div>
             <button class="tools-arrow tools-arrow-right" onclick="scrollTools(1, 'life-tools-bar')" aria-label="向右滑动">
@@ -1274,6 +1283,11 @@
                 'online.p9.desc': '天气查询工具，查看各地实时天气与未来预报。',
                 'online.p9.desc.short': '实时天气',
 
+                // Travel
+                'online.p11.title': '旅行工具',
+                'online.p11.desc': '旅行信息查询工具，提供目的地、行程等相关信息查询。',
+                'online.p11.desc.short': '旅行信息查询',
+
                 // Threat Intelligence
                 'intel.title': '威胁情报',
                 'intel.subtitle': '定期整理和推送最新的网络安全相关资源',
@@ -1371,6 +1385,11 @@
                 'online.p9.desc': 'Weather tool to check live weather and forecasts for any location.',
                 'online.p9.desc.short': 'Live Weather',
 
+                // Travel
+                'online.p11.title': 'Travel',
+                'online.p11.desc': 'Travel info lookup tool, providing destination, itinerary and related information.',
+                'online.p11.desc.short': 'Travel Info Lookup',
+
                 // Threat Intelligence
                 'intel.title': 'Threat Intelligence',
                 'intel.subtitle': 'Regularly curates and delivers the latest cybersecurity resources',
@@ -1421,7 +1440,7 @@
         const contributionsData = [
             { rank: 1, name: 'lief-project/LIEF', link: 'https://github.com/lief-project/LIEF', stars: '6.2k', fieldZh: '二进制分析', fieldEn: 'Binary Analysis' },
             { rank: 2, name: 'unicorn-engine/unicorn', link: 'https://github.com/unicorn-engine/unicorn', stars: '7.2k', fieldZh: '模拟器/Fuzzing', fieldEn: 'Emulator/Fuzzing' },
-            { rank: 3, name: 'horsicq/Formats', link: 'https://github.com/horsicq/Formats', stars: '1.4k', fieldZh: '文件格式检测', fieldEn: 'File Format Detection' },
+            { rank: 3, name: 'horsicq/detect-it-easy', link: 'https://github.com/horsicq/detect-it-easy', stars: '1.4k', fieldZh: '文件格式检测', fieldEn: 'File Format Detection' },
             { rank: 4, name: 'quarkslab/binbloom', link: 'https://github.com/quarkslab/binbloom', stars: '142', fieldZh: '二进制分析', fieldEn: 'Binary Analysis' },
             { rank: 5, name: 'capstone-engine/capstone', link: 'https://github.com/capstone-engine/capstone', stars: '9.1k', fieldZh: '反汇编框架', fieldEn: 'Disassembler Framework' },
             { rank: 6, name: 'googleprojectzero/TinyInst', link: 'https://github.com/googleprojectzero/TinyInst', stars: '2.8k', fieldZh: '二进制重写', fieldEn: 'Binary Rewriting' },
@@ -1584,7 +1603,7 @@
                 <tr>
                     <td><span class="rank">${item.rank}</span></td>
                     <td><a href="${item.link}" class="project-name" target="_blank">${item.name} <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg></a></td>
-                    <td><span class="stars">${item.stars}</span></td>
+                    <td><span class="stars" data-repo="${item.name}">${item.stars}</span></td>
                     <td><span class="tag">${currentLang === 'zh' ? item.fieldZh : item.fieldEn}</span></td>
                 </tr>
             `).join('');
@@ -1595,10 +1614,13 @@
                 <tr>
                     <td><span class="rank">${item.rank}</span></td>
                     <td><a href="${item.link}" class="project-name" target="_blank">${item.name} <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg></a></td>
-                    <td><span class="stars">${item.stars}</span></td>
+                    <td><span class="stars" data-repo="${item.name}">${item.stars}</span></td>
                     <td><span class="tag">${currentLang === 'zh' ? item.fieldZh : item.fieldEn}</span></td>
                 </tr>
             `).join('');
+
+            // Fetch live star counts from GitHub API; fall back to hardcoded values on failure
+            refreshStars();
         }
 
         // Simple scroll animation
@@ -1710,6 +1732,34 @@
             el.style.transition = `opacity 0.6s ease-out ${index * 0.15}s, transform 0.6s ease-out ${index * 0.15}s`;
             observer.observe(el);
         });
+
+        // Format a star count the way GitHub does: 1.2k / 3.4M
+        function formatStars(count) {
+            const trim = n => n.endsWith('.0') ? n.slice(0, -2) : n;
+            if (count >= 1e6) return trim((count / 1e6).toFixed(1)) + 'M';
+            if (count >= 1e3) return trim((count / 1e3).toFixed(1)) + 'k';
+            return String(count);
+        }
+
+        // Live star counts: fetch in parallel, update each cell, keep hardcoded fallback on error/limit
+        function refreshStars() {
+            const cells = document.querySelectorAll('span.stars[data-repo]');
+            cells.forEach(cell => {
+                const repo = cell.getAttribute('data-repo');
+                if (!repo) return;
+                fetch(`https://api.github.com/repos/${repo}`)
+                    .then(res => {
+                        if (!res.ok) throw new Error('GitHub API error ' + res.status);
+                        return res.json();
+                    })
+                    .then(data => {
+                        if (typeof data.stargazers_count === 'number') {
+                            cell.textContent = formatStars(data.stargazers_count);
+                        }
+                    })
+                    .catch(() => { /* keep the hardcoded value already in the cell */ });
+            });
+        }
 
         // Online tools scroll with arrows
         function scrollTools(direction, barId = 'tools-bar') {

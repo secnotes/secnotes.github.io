@@ -671,236 +671,206 @@
             height: 60px;
         }
 
-        /* Online Tools Special Style */
-        .tools-category {
+        /* Online Tools — single big card with grid layout */
+        .tools-board {
             max-width: 1200px;
-            margin: 24px auto 8px;
-            padding: 0 24px;
-            font-size: 0.9rem;
+            margin: 8px auto 40px;
+            padding: 32px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .tools-board-intro {
+            max-width: 720px;
+            margin: 0 auto 28px;
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .tools-group {
+            margin-bottom: 28px;
+        }
+
+        .tools-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-group-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--text-secondary);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
+            letter-spacing: 0.08em;
         }
 
-        .tools-category::before,
-        .tools-category::after {
+        .tools-group-title::before {
+            content: '';
+            width: 6px;
+            height: 18px;
+            border-radius: 3px;
+            background: var(--gradient-primary);
+            flex-shrink: 0;
+        }
+
+        .tools-group-title::after {
             content: '';
             flex: 1;
-            max-width: 120px;
             height: 1px;
-            background: var(--border-color);
+            background: linear-gradient(90deg, var(--border-color), transparent);
         }
 
-        .tools-wrapper {
-            position: relative;
-            background: var(--bg-secondary);
-            padding: 20px 0;
-        }
-
-        .tools-bar {
-            display: flex;
-            gap: 16px;
-            justify-content: flex-start;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            overflow-y: hidden;
-            padding: 20px 24px;
-            scrollbar-width: thin;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .tools-bar::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .tools-bar::-webkit-scrollbar-track {
-            background: var(--bg-secondary);
-            border-radius: 3px;
-        }
-
-        .tools-bar::-webkit-scrollbar-thumb {
-            background: var(--border-color);
-            border-radius: 3px;
-        }
-
-        .tools-bar::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-color);
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 4px 8px;
         }
 
         .tool-item {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
-            justify-content: center;
-            width: 220px;
-            height: 180px;
-            flex-shrink: 0;
-            background: var(--bg-card);
-            border: 2px solid var(--border-color);
-            border-radius: 20px;
+            gap: 14px;
+            padding: 12px 14px;
+            background: transparent;
+            border: none;
+            border-radius: 12px;
             text-decoration: none;
             color: var(--text-primary);
-            transition: all 0.3s ease;
+            transition: background 0.25s ease, transform 0.25s ease;
             position: relative;
-            overflow: hidden;
             cursor: pointer;
         }
 
+        /* Left accent bar that appears on hover */
+        .tool-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 3px;
+            height: 60%;
+            border-radius: 0 3px 3px 0;
+            background: var(--gradient-primary);
+            transform: translateY(-50%) scaleY(0);
+            transform-origin: center;
+            transition: transform 0.25s ease;
+        }
+
         .tool-item:hover {
-            transform: translateY(-8px);
-            border-color: var(--primary-color);
-            box-shadow: var(--shadow-lg);
+            background: var(--bg-secondary);
+            transform: translateX(4px);
+        }
+
+        .tool-item:hover::before {
+            transform: translateY(-50%) scaleY(1);
         }
 
         .tool-icon-large {
-            font-size: 3rem;
-            margin-bottom: 12px;
-            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            line-height: 1;
+            border-radius: 12px;
+            background: var(--bg-secondary);
+            transition: background 0.25s ease, transform 0.25s ease;
         }
 
         .tool-item:hover .tool-icon-large {
-            transform: scale(1.1);
+            background: rgba(99, 102, 241, 0.14);
+            transform: scale(1.06);
+        }
+
+        .tool-text {
+            flex: 1;
+            min-width: 0;
         }
 
         .tool-title {
-            font-size: 1rem;
+            font-size: 0.92rem;
             font-weight: 600;
-            text-align: center;
-            margin-bottom: 8px;
             color: var(--text-primary);
+            margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.25s ease;
+        }
+
+        .tool-item:hover .tool-title {
+            color: var(--primary-color);
         }
 
         .tool-desc {
             font-size: 0.75rem;
-            text-align: center;
             color: var(--text-secondary);
-            max-width: 180px;
             line-height: 1.4;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         .tool-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
+            flex-shrink: 0;
             background: rgba(99, 102, 241, 0.1);
             color: var(--primary-color);
-            padding: 4px 8px;
-            border-radius: 8px;
-            font-size: 0.65rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            padding: 2px 7px;
+            border-radius: 6px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            transition: background 0.25s ease, color 0.25s ease;
         }
 
         .tool-item:hover .tool-badge {
             background: var(--primary-color);
-            color: white;
-        }
-
-        /* Arrow Buttons */
-        .tools-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            transition: all 0.2s;
-            color: var(--text-secondary);
-        }
-
-        .tools-arrow:hover {
-            background: var(--primary-color);
-            border-color: var(--primary-color);
-            color: white;
-        }
-
-        .tools-arrow svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .tools-arrow-left {
-            left: 10px;
-        }
-
-        .tools-arrow-right {
-            right: 10px;
+            color: #fff;
         }
 
         @media (max-width: 768px) {
-            .tools-wrapper {
-                padding: 20px 45px;
+            .tools-board {
+                padding: 20px 16px;
+                border-radius: 18px;
             }
 
-            .tools-arrow {
-                width: 36px;
-                height: 36px;
-            }
-
-            .tools-arrow-left {
-                left: 5px;
-            }
-
-            .tools-arrow-right {
-                right: 5px;
-            }
-
-            .tools-bar {
-                gap: 12px;
-                justify-content: flex-start;
-                padding: 10px 0;
+            .tools-grid {
+                grid-template-columns: 1fr;
             }
 
             .tool-item {
-                width: 180px;
-                height: 160px;
-                flex-shrink: 0;
+                padding: 12px 14px;
             }
 
             .tool-icon-large {
-                font-size: 2.5rem;
+                width: 38px;
+                height: 38px;
+                font-size: 1.25rem;
             }
 
             .tool-title {
-                font-size: 0.9rem;
+                font-size: 0.88rem;
             }
 
             .tool-desc {
                 font-size: 0.7rem;
-                max-width: 140px;
             }
         }
 
         @media (max-width: 480px) {
-            .tools-wrapper {
-                padding: 15px 40px;
-            }
-
-            .tools-arrow {
-                width: 32px;
-                height: 32px;
-            }
-
-            .tools-bar {
-                padding: 8px 0;
-            }
-
-            .tool-item {
-                width: 160px;
-                height: 140px;
+            .tool-badge {
+                font-size: 0.55rem;
+                padding: 2px 6px;
             }
         }
     </style>
@@ -1011,123 +981,142 @@
     <section id="online-tools" class="section">
         <div class="container">
             <h2 class="section-title" data-i18n="online.title">在线工具</h2>
-        </div>
-        <div class="tools-category container" data-i18n="online.category.security">安全工具</div>
-        <div class="tools-wrapper">
-            <button class="tools-arrow tools-arrow-left" onclick="scrollTools(-1, 'tools-bar')" aria-label="向左滑动">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-            </button>
-            <div class="tools-bar" id="tools-bar">
-                <!-- Tool 1 -->
-                <a href="https://secnotes.github.io/onlineasm" class="tool-item" target="_blank">
-                    <span class="tool-badge">ASM</span>
-                    <div class="tool-icon-large">🔧</div>
-                    <div class="tool-title" data-i18n="online.p1.title">在线反汇编/汇编</div>
-                    <div class="tool-desc" data-i18n="online.p1.desc.short">x86/ARM/MIPS 多架构支持</div>
-                </a>
+            <p class="section-subtitle" data-i18n="online.subtitle">无需安装，浏览器直接使用的在线工具</p>
+            <div class="tools-board">
+                <!-- Security Tools -->
+                <div class="tools-group">
+                    <div class="tools-group-title" data-i18n="online.category.security">安全工具</div>
+                    <div class="tools-grid">
+                        <a href="https://secnotes.github.io/onlineasm" class="tool-item" target="_blank">
+                            <div class="tool-icon-large">🔧</div>
+                            <div class="tool-text">
+                                <div class="tool-title">
+                                    <span data-i18n="online.p1.title">在线反汇编/汇编</span>
+                                    <span class="tool-badge">ASM</span>
+                                </div>
+                                <div class="tool-desc" data-i18n="online.p1.desc.short">x86/ARM/MIPS 多架构支持</div>
+                            </div>
+                        </a>
+                        <a href="https://secnotes.github.io/onlinecrypto" class="tool-item" target="_blank">
+                            <div class="tool-icon-large">🔐</div>
+                            <div class="tool-text">
+                                <div class="tool-title">
+                                    <span data-i18n="online.p2.title">在线加解密工具</span>
+                                    <span class="tool-badge">CRYPTO</span>
+                                </div>
+                                <div class="tool-desc" data-i18n="online.p2.desc.short">AES/DES/RSA/Base64等</div>
+                            </div>
+                        </a>
+                        <a href="https://secnotes.github.io/onlinedict" class="tool-item" target="_blank">
+                            <div class="tool-icon-large">📝</div>
+                            <div class="tool-text">
+                                <div class="tool-title">
+                                    <span data-i18n="online.p3.title">密码字典生成器</span>
+                                    <span class="tool-badge">DICT</span>
+                                </div>
+                                <div class="tool-desc" data-i18n="online.p3.desc.short">多模式字典生成</div>
+                            </div>
+                        </a>
+                        <a href="https://secnotes.github.io/hoapi/" class="tool-item" target="_blank">
+                            <div class="tool-icon-large">📱</div>
+                            <div class="tool-text">
+                                <div class="tool-title">
+                                    <span data-i18n="online.p4.title">HarmonyOS API</span>
+                                    <span class="tool-badge">API</span>
+                                </div>
+                                <div class="tool-desc" data-i18n="online.p4.desc.short">API Level 参考表</div>
+                            </div>
+                        </a>
+                        <a href="https://secnotes.github.io/syscalls/" class="tool-item" target="_blank">
+                            <div class="tool-icon-large">📋</div>
+                            <div class="tool-text">
+                                <div class="tool-title">
+                                    <span data-i18n="online.p5.title">系统调用查询表</span>
+                                    <span class="tool-badge">SYSCALL</span>
+                                </div>
+                                <div class="tool-desc" data-i18n="online.p5.desc.short">多平台系统调用号对照</div>
+                            </div>
+                        </a>
+                        <a href="https://secnotes.github.io/r2web/" class="tool-item" target="_blank">
+                            <div class="tool-icon-large">🔍</div>
+                            <div class="tool-text">
+                                <div class="tool-title">
+                                    <span data-i18n="online.p10.title">在线 Radare2</span>
+                                    <span class="tool-badge">R2</span>
+                                </div>
+                                <div class="tool-desc" data-i18n="online.p10.desc.short">浏览器内逆向分析</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
 
-                <!-- Tool 2 -->
-                <a href="https://secnotes.github.io/onlinecrypto" class="tool-item" target="_blank">
-                    <span class="tool-badge">CRYPTO</span>
-                    <div class="tool-icon-large">🔐</div>
-                    <div class="tool-title" data-i18n="online.p2.title">在线加解密工具</div>
-                    <div class="tool-desc" data-i18n="online.p2.desc.short">AES/DES/RSA/Base64等</div>
-                </a>
-
-                <!-- Tool 3 -->
-                <a href="https://secnotes.github.io/onlinedict" class="tool-item" target="_blank">
-                    <span class="tool-badge">DICT</span>
-                    <div class="tool-icon-large">📝</div>
-                    <div class="tool-title" data-i18n="online.p3.title">密码字典生成器</div>
-                    <div class="tool-desc" data-i18n="online.p3.desc.short">多模式字典生成</div>
-                </a>
-
-                <!-- Tool 4 -->
-                <a href="https://secnotes.github.io/hoapi/" class="tool-item" target="_blank">
-                    <span class="tool-badge">API</span>
-                    <div class="tool-icon-large">📱</div>
-                    <div class="tool-title" data-i18n="online.p4.title">HarmonyOS API</div>
-                    <div class="tool-desc" data-i18n="online.p4.desc.short">API Level 参考表</div>
-                </a>
-
-                <!-- Tool 5 -->
-                <a href="https://secnotes.github.io/syscalls/" class="tool-item" target="_blank">
-                    <span class="tool-badge">SYSCALL</span>
-                    <div class="tool-icon-large">📋</div>
-                    <div class="tool-title" data-i18n="online.p5.title">系统调用查询表</div>
-                    <div class="tool-desc" data-i18n="online.p5.desc.short">多平台系统调用号对照</div>
-                </a>
-
-                <!-- Tool 6 -->
-                <a href="https://secnotes.github.io/r2web/" class="tool-item" target="_blank">
-                    <span class="tool-badge">R2</span>
-                    <div class="tool-icon-large">🔍</div>
-                    <div class="tool-title" data-i18n="online.p10.title">在线 Radare2</div>
-                    <div class="tool-desc" data-i18n="online.p10.desc.short">浏览器内逆向分析</div>
-                </a>
+                <!-- Life Tools -->
+                <div class="tools-group">
+                    <div class="tools-group-title" data-i18n="online.category.life">生活工具</div>
+                    <div class="tools-grid">
+                        <a href="https://secnotes.github.io/gaokao" class="tool-item" target="_blank">
+                            <div class="tool-icon-large">🎓</div>
+                            <div class="tool-text">
+                                <div class="tool-title">
+                                    <span data-i18n="online.p6.title">高考工具</span>
+                                    <span class="tool-badge" data-i18n="online.p6.badge">高考</span>
+                                </div>
+                                <div class="tool-desc" data-i18n="online.p6.desc.short">高考信息查询</div>
+                            </div>
+                        </a>
+                        <a href="https://secnotes.github.io/tax" class="tool-item" target="_blank">
+                            <div class="tool-icon-large">💰</div>
+                            <div class="tool-text">
+                                <div class="tool-title">
+                                    <span data-i18n="online.p7.title">个税计算器</span>
+                                    <span class="tool-badge" data-i18n="online.p7.badge">税务</span>
+                                </div>
+                                <div class="tool-desc" data-i18n="online.p7.desc.short">个人所得税计算</div>
+                            </div>
+                        </a>
+                        <a href="https://secnotes.github.io/calendar" class="tool-item" target="_blank">
+                            <div class="tool-icon-large">📅</div>
+                            <div class="tool-text">
+                                <div class="tool-title">
+                                    <span data-i18n="online.p8.title">万年历</span>
+                                    <span class="tool-badge" data-i18n="online.p8.badge">日历</span>
+                                </div>
+                                <div class="tool-desc" data-i18n="online.p8.desc.short">日历查询</div>
+                            </div>
+                        </a>
+                        <a href="https://secnotes.github.io/weather" class="tool-item" target="_blank">
+                            <div class="tool-icon-large">⛅</div>
+                            <div class="tool-text">
+                                <div class="tool-title">
+                                    <span data-i18n="online.p9.title">天气查询</span>
+                                    <span class="tool-badge" data-i18n="online.p9.badge">天气</span>
+                                </div>
+                                <div class="tool-desc" data-i18n="online.p9.desc.short">实时天气</div>
+                            </div>
+                        </a>
+                        <a href="https://secnotes.github.io/travel/" class="tool-item" target="_blank">
+                            <div class="tool-icon-large">✈️</div>
+                            <div class="tool-text">
+                                <div class="tool-title">
+                                    <span data-i18n="online.p11.title">旅行工具</span>
+                                    <span class="tool-badge" data-i18n="online.p11.badge">旅行</span>
+                                </div>
+                                <div class="tool-desc" data-i18n="online.p11.desc.short">旅行信息查询</div>
+                            </div>
+                        </a>
+                        <a href="https://secnotes.github.io/mobile-os-museum" class="tool-item" target="_blank">
+                            <div class="tool-icon-large">📲</div>
+                            <div class="tool-text">
+                                <div class="tool-title">
+                                    <span data-i18n="online.p12.title">移动 OS 博物馆</span>
+                                    <span class="tool-badge" data-i18n="online.p12.badge">博物馆</span>
+                                </div>
+                                <div class="tool-desc" data-i18n="online.p12.desc.short">历代移动操作系统回顾</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <button class="tools-arrow tools-arrow-right" onclick="scrollTools(1, 'tools-bar')" aria-label="向右滑动">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-            </button>
-        </div>
-
-        <div class="tools-category container" data-i18n="online.category.life">生活工具</div>
-        <div class="tools-wrapper">
-            <button class="tools-arrow tools-arrow-left" onclick="scrollTools(-1, 'life-tools-bar')" aria-label="向左滑动">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-            </button>
-            <div class="tools-bar" id="life-tools-bar">
-                <!-- Life Tool 1 -->
-                <a href="https://secnotes.github.io/gaokao" class="tool-item" target="_blank">
-                    <span class="tool-badge">高考</span>
-                    <div class="tool-icon-large">🎓</div>
-                    <div class="tool-title" data-i18n="online.p6.title">高考工具</div>
-                    <div class="tool-desc" data-i18n="online.p6.desc.short">高考信息查询</div>
-                </a>
-
-                <!-- Life Tool 2 -->
-                <a href="https://secnotes.github.io/tax" class="tool-item" target="_blank">
-                    <span class="tool-badge">税务</span>
-                    <div class="tool-icon-large">💰</div>
-                    <div class="tool-title" data-i18n="online.p7.title">个税计算器</div>
-                    <div class="tool-desc" data-i18n="online.p7.desc.short">个人所得税计算</div>
-                </a>
-
-                <!-- Life Tool 3 -->
-                <a href="https://secnotes.github.io/calendar" class="tool-item" target="_blank">
-                    <span class="tool-badge">日历</span>
-                    <div class="tool-icon-large">📅</div>
-                    <div class="tool-title" data-i18n="online.p8.title">万年历</div>
-                    <div class="tool-desc" data-i18n="online.p8.desc.short">日历查询</div>
-                </a>
-
-                <!-- Life Tool 4 -->
-                <a href="https://secnotes.github.io/weather" class="tool-item" target="_blank">
-                    <span class="tool-badge">天气</span>
-                    <div class="tool-icon-large">⛅</div>
-                    <div class="tool-title" data-i18n="online.p9.title">天气查询</div>
-                    <div class="tool-desc" data-i18n="online.p9.desc.short">实时天气</div>
-                </a>
-
-                <!-- Life Tool 5 -->
-                <a href="https://secnotes.github.io/travel/" class="tool-item" target="_blank">
-                    <span class="tool-badge">旅行</span>
-                    <div class="tool-icon-large">✈️</div>
-                    <div class="tool-title" data-i18n="online.p11.title">旅行工具</div>
-                    <div class="tool-desc" data-i18n="online.p11.desc.short">旅行信息查询</div>
-                </a>
-            </div>
-            <button class="tools-arrow tools-arrow-right" onclick="scrollTools(1, 'life-tools-bar')" aria-label="向右滑动">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-            </button>
         </div>
     </section>
 
@@ -1272,21 +1261,30 @@
                 // Life Tools
                 'online.p6.title': '高考工具',
                 'online.p6.desc': '高考相关信息查询工具，提供分数线、院校等数据查询。',
-                'online.p6.desc.short': '高考信息查询',
+                'online.p6.desc.short': '新高考投档线查询',
+                'online.p6.badge': '高考',
                 'online.p7.title': '个税计算器',
                 'online.p7.desc': '个人所得税计算工具，支持最新税率表，快速计算应纳税额。',
                 'online.p7.desc.short': '个人所得税计算',
+                'online.p7.badge': '税务',
                 'online.p8.title': '万年历',
                 'online.p8.desc': '万年历查询工具，支持节假日、农历等信息查询。',
                 'online.p8.desc.short': '日历查询',
+                'online.p8.badge': '日历',
                 'online.p9.title': '天气查询',
                 'online.p9.desc': '天气查询工具，查看各地实时天气与未来预报。',
                 'online.p9.desc.short': '实时天气',
+                'online.p9.badge': '天气',
 
                 // Travel
                 'online.p11.title': '旅行工具',
                 'online.p11.desc': '旅行信息查询工具，提供目的地、行程等相关信息查询。',
                 'online.p11.desc.short': '旅行信息查询',
+                'online.p11.badge': '旅行',
+                'online.p12.title': '移动 OS 博物馆',
+                'online.p12.desc': '回顾历代移动操作系统，重温 Symbian、Windows Mobile、BlackBerry 等经典平台的演进历程。',
+                'online.p12.desc.short': '历代移动操作系统回顾',
+                'online.p12.badge': '博物馆',
 
                 // Threat Intelligence
                 'intel.title': '威胁情报',
@@ -1374,21 +1372,30 @@
                 // Life Tools
                 'online.p6.title': 'Gaokao Tool',
                 'online.p6.desc': 'College entrance exam info lookup tool, providing score lines, colleges and more.',
-                'online.p6.desc.short': 'Gaokao Info Lookup',
+                'online.p6.desc.short': 'New Gaokao Admission Cutoff Lookup',
+                'online.p6.badge': 'Gaokao',
                 'online.p7.title': 'Tax Calculator',
                 'online.p7.desc': 'Income tax calculator with the latest tax brackets to quickly compute payable tax.',
                 'online.p7.desc.short': 'Income Tax Calc',
+                'online.p7.badge': 'Tax',
                 'online.p8.title': 'Calendar',
                 'online.p8.desc': 'Perpetual calendar tool supporting holidays, lunar calendar and more.',
                 'online.p8.desc.short': 'Calendar Lookup',
+                'online.p8.badge': 'Calendar',
                 'online.p9.title': 'Weather',
                 'online.p9.desc': 'Weather tool to check live weather and forecasts for any location.',
                 'online.p9.desc.short': 'Live Weather',
+                'online.p9.badge': 'Weather',
 
                 // Travel
                 'online.p11.title': 'Travel',
                 'online.p11.desc': 'Travel info lookup tool, providing destination, itinerary and related information.',
                 'online.p11.desc.short': 'Travel Info Lookup',
+                'online.p11.badge': 'Travel',
+                'online.p12.title': 'Mobile OS Museum',
+                'online.p12.desc': 'A retrospective of mobile operating systems, revisiting the evolution of classic platforms like Symbian, Windows Mobile and BlackBerry.',
+                'online.p12.desc.short': 'Legacy mobile OS retrospective',
+                'online.p12.badge': 'Museum',
 
                 // Threat Intelligence
                 'intel.title': 'Threat Intelligence',
@@ -1760,51 +1767,6 @@
                     .catch(() => { /* keep the hardcoded value already in the cell */ });
             });
         }
-
-        // Online tools scroll with arrows
-        function scrollTools(direction, barId = 'tools-bar') {
-            const toolsBar = document.getElementById(barId);
-            const scrollAmount = 240; // width of one card + gap
-            toolsBar.scrollBy({
-                left: direction * scrollAmount,
-                behavior: 'smooth'
-            });
-        }
-
-        // Drag to scroll for tools bars (applies to every .tools-bar)
-        document.querySelectorAll('.tools-bar').forEach(toolsBar => {
-            let isDragging = false;
-            let startX = 0;
-            let scrollLeft = 0;
-
-            toolsBar.style.cursor = 'grab';
-
-            toolsBar.addEventListener('mousedown', (e) => {
-                isDragging = true;
-                toolsBar.style.cursor = 'grabbing';
-                startX = e.pageX - toolsBar.offsetLeft;
-                scrollLeft = toolsBar.scrollLeft;
-                e.preventDefault();
-            });
-
-            toolsBar.addEventListener('mouseleave', () => {
-                isDragging = false;
-                toolsBar.style.cursor = 'grab';
-            });
-
-            toolsBar.addEventListener('mouseup', () => {
-                isDragging = false;
-                toolsBar.style.cursor = 'grab';
-            });
-
-            toolsBar.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
-                e.preventDefault();
-                const x = e.pageX - toolsBar.offsetLeft;
-                const walk = (x - startX) * 1.5; // scroll speed multiplier
-                toolsBar.scrollLeft = scrollLeft - walk;
-            });
-        });
 
         // Initial render
         renderTables();

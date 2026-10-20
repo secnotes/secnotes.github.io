@@ -604,26 +604,24 @@
         .lang-toggle {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 20px;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
             cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.8rem;
+            font-weight: 600;
             transition: all 0.2s;
         }
 
         .lang-toggle:hover {
-            background: var(--primary-hover);
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
             transform: translateY(-1px);
-        }
-
-        .lang-toggle svg {
-            width: 16px;
-            height: 16px;
         }
 
         /* Theme Toggle Button */
@@ -659,11 +657,6 @@
 
             .nav-right {
                 gap: 12px;
-            }
-
-            .lang-toggle {
-                padding: 6px 12px;
-                font-size: 0.85rem;
             }
         }
 
@@ -896,10 +889,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                     </svg>
                 </button>
-                <button class="lang-toggle" onclick="toggleLanguage()">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-                    </svg>
+                <button class="lang-toggle" onclick="toggleLanguage()" title="切换语言">
                     <span id="lang-btn-text">EN</span>
                 </button>
             </div>
@@ -1085,7 +1075,7 @@
                             </div>
                         </a>
                         <a href="https://secnotes.github.io/weather" class="tool-item" target="_blank">
-                            <div class="tool-icon-large">⛅</div>
+                            <div class="tool-icon-large">⛅️</div>
                             <div class="tool-text">
                                 <div class="tool-title">
                                     <span data-i18n="online.p9.title">天气查询</span>
@@ -1095,7 +1085,7 @@
                             </div>
                         </a>
                         <a href="https://secnotes.github.io/travel/" class="tool-item" target="_blank">
-                            <div class="tool-icon-large">✈️</div>
+                            <div class="tool-icon-large">🧭</div>
                             <div class="tool-text">
                                 <div class="tool-title">
                                     <span data-i18n="online.p11.title">旅行工具</span>
